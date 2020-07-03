@@ -1,0 +1,10 @@
+.App {
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+}
+.listItem {
+  width: auto;
+  padding: 2em;
+  list-style: none;
+}

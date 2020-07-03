@@ -7,16 +7,16 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-//HomeGet is handler function for GET request on "/"
-func HomeGet() gin.HandlerFunc {
+//UserGet is handler function for GET request on "/"
+func UserGet() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		users := service.GetAll()
 		c.JSON(http.StatusOK, users)
 	}
 }
 
-//HomePost is handler function for POST request on "/"
-func HomePost() gin.HandlerFunc {
+//UserPost is handler function for POST request on "/"
+func UserPost() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		type Address struct {
 			Address string `json:"email"`

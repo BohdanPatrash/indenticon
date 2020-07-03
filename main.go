@@ -10,7 +10,7 @@ func main() {
 	repo.Init()
 
 	r := gin.Default()
-	r.GET("/", handler.HomeGet())
-	r.POST("/", handler.HomePost())
+	r.GET("/user", handler.UserGet())
+	r.POST("/user", handler.UserPost())
 	r.Run()
 }
