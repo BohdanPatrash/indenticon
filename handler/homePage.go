@@ -3,6 +3,7 @@ package handler
 import (
 	"net/http"
 
+	"github.com/BohdanPatrash/indenticon/repo"
 	"github.com/BohdanPatrash/indenticon/service"
 	"github.com/gin-gonic/gin"
 )
@@ -10,7 +11,7 @@ import (
 //UserGet is handler function for GET request on "/"
 func UserGet() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		users := service.GetAll()
+		users, _ := repo.GetAllUsers()
 		c.JSON(http.StatusOK, users)
 	}
 }
@@ -24,6 +25,6 @@ func UserPost() gin.HandlerFunc {
 		email := Address{}
 		c.Bind(&email)
 		user := service.CreateUser(email.Address)
-		service.SaveUser(user)
+		repo.SaveUser(user)
 	}
 }

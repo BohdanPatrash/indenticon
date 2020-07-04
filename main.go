@@ -7,7 +7,10 @@ import (
 )
 
 func main() {
-	repo.Init()
+	db := repo.Init()
+	defer db.Close()
+
+	repo.DatabaseSetup()
 
 	r := gin.Default()
 	r.GET("/user", handler.UserGet())
