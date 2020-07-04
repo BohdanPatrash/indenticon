@@ -3,9 +3,26 @@ import './App.css';
 import axios from "axios"
 
 class App extends Component {
-  state = {}
+  state = {
+    email: ""
+  }
   
-  componentDidMount() {
+  handleButton = (e) => {
+    axios.post("/user", {email: this.state.email})
+      .then(
+        res => {
+          this.getUsers()
+        }
+      );
+  }
+
+  handleInputChange = (e) => {
+    this.setState({
+      email: e.target.value
+    })
+  }
+
+  getUsers = () => {
     axios.get("/user")
       .then(
         res => {
@@ -22,9 +39,20 @@ class App extends Component {
       );
   }
 
+  componentDidMount() {
+    this.getUsers()
+  }
+
   render() {    
     return (
       <div className="App">
+        <div className="userForm">
+          <label>
+            Enter an email:
+            <input type="text" value={this.state.email} onChange={this.handleInputChange} />
+            <button onClick={this.handleButton}>Create user</button>
+          </label>
+        </div>
         {this.state.images}
       </div>
     )

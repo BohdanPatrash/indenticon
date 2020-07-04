@@ -8,3 +8,9 @@
   padding: 2em;
   list-style: none;
 }
+
+.userForm {
+  padding: 3em;
+  text-align: center;
+  width: 100%;
+}
