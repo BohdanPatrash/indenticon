@@ -2,6 +2,7 @@ package service
 
 import (
 	"crypto/sha256"
+	"flag"
 	"fmt"
 )
 
@@ -14,4 +15,8 @@ func (hash *Hash) String() string {
 func GetHash(data string) []byte {
 	hash := sha256.Sum256([]byte(data))
 	return hash[:]
+}
+
+func Testing() bool {
+	return flag.Lookup("test.v") != nil
 }

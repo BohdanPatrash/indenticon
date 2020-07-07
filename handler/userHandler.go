@@ -25,6 +25,9 @@ func UserPost() gin.HandlerFunc {
 		email := Address{}
 		c.Bind(&email)
 		user := service.CreateUser(email.Address)
-		repo.SaveUser(user)
+		err := repo.SaveUser(user)
+		if err != nil {
+			c.AbortWithError(http.StatusBadRequest, err)
+		}
 	}
 }
